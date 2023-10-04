@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{BDBCE7D3-139D-3EDB-816D-FB1D73476D25}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/movePan.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/MainMenuManager.cs" Line="16" Column="5" />
-      <File FileName="Assets/movePan.cs" Line="31" Column="32" />
+      <File FileName="Assets/Scripts/MainMenuManager.cs" Line="19" Column="2" />
+      <File FileName="Assets/movePan.cs" Line="33" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Unity Project" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
-              <Node name="movePan.cs" selected="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="MenuManager.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
