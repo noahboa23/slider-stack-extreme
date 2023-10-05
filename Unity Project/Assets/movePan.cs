@@ -26,8 +26,8 @@ public class movePan : MonoBehaviour
     // Lock the mouse movement and make the mouse invisible.
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
     }
 
     private void Update()
