@@ -1,7 +1,7 @@
 /***************************************************************************************
-This Object is applied to the camera to move it and pan it based on the mouse movement
-To pan, right click and move the mouse
-To move, left click and move the mouse
+This Object is applied to the camera to move it and pan it based on the keys W,S,A,D and the right and leftarrows.
+To pan: use the left and right arrows
+To move: Use the W,S,A,D keys.
 ****************************************************************************************/
 
 using System.Collections;
@@ -12,17 +12,16 @@ public class movePan : MonoBehaviour
 {
 
     public Transform orientation;
+    public float acceleration = 0.0002F;
+    public float maxSpeed = 0.007F;
 
     Vector3 velocity;
-
-    public float moveSpeed = 0.1f;
-    public float panSpeed = 500;
 
     float xRotation;
     float yRotation;
 
-    float directionX;
-    float directionY;
+    Vector3 velocityX;
+    Vector3 velocityY;
 
     // Lock the mouse movement and make the mouse invisible.
     void Start()
@@ -33,55 +32,53 @@ public class movePan : MonoBehaviour
 
     private void Update()
     {
-        // Get the mouse x and y values and multiply it by delta time.
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime;
+        // For each user movement command the program first calculates the next potential movement and stores it to test.
+        // If the magnitude of the next potential speed change is less than the maxSpeed the speed will be stored to either velocityY or velocityX and then later updated.
 
-        // If the right click is pressed pan.
-        // if (Input.GetKey(KeyCode.Mouse1) == true)
-        // {
-        //     mouseX = mouseX * panSpeed;
-        //     mouseY = mouseY * panSpeed;
-
-        //     yRotation += mouseX;
-        //     xRotation -= mouseY;
-
-        //     transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        //     orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        // }
-        // If the left click is pressed set movement velocity.
-        float YIntensity = 0.3F;
-        // if (Input.GetKey(KeyCode.UpArrow) == true)
-        // {
-        //     // directionX += YIntensity;
-        //     directionY += YIntensity;
-        //     // velocity = (orientation.forward * directionY * moveSpeed) + (orientation.right * directionX * moveSpeed);
-        // }
-        directionY = YIntensity;
-        // if (Input.GetKey(KeyCode.DownArrow) == true)
-        // {
-        //     // directionX += YIntensity;
-        //     directionY -= YIntensity;
-        //     // velocity = (orientation.forward * directionY * moveSpeed) + (orientation.right * directionX * moveSpeed);
-        // }
+        //If the W key is pressed increase the Y velocity relative to the orientation. This will move forwards relative to the camera.
+        Vector3 test = velocityY + (orientation.forward * acceleration);
+        if (Input.GetKey(KeyCode.W) == true && test.sqrMagnitude < maxSpeed)
+        {
+            velocityY = test;
+        }
+        //If the S key is pressed decrease the Y velocity relative to the orientation. This will move backwards relative to the camera.
+        test = velocityY - (orientation.forward * acceleration);
+        if (Input.GetKey(KeyCode.S) == true && test.sqrMagnitude < maxSpeed)
+        {
+            velocityY = test;
+        }
+        //If the D key is pressed increase the Y velocity relative to the orientation. This will move to the right relative to the camera.
+        test = velocityX + (orientation.right * acceleration);
+        if (Input.GetKey(KeyCode.D) == true && test.sqrMagnitude < maxSpeed)
+        {
+            velocityX = test;
+        }
+        //If the A key is pressed decrease the Y velocity relative to the orientation. This will move to the left relative to the camera.
+        test = velocityX - (orientation.right * acceleration);
+        if (Input.GetKey(KeyCode.A) == true && test.sqrMagnitude < maxSpeed)
+        {
+            velocityX = test;
+        }
 
         float YRotIntensity = 1F;
         float XRotIntensity = 1F;
+        //If the right arrow is pressed rotate right.
         if (Input.GetKey(KeyCode.RightArrow) == true)
         {
             yRotation += YRotIntensity;
             xRotation -= XRotIntensity;
         }
-
+        //If the left arrow is pressed rotate left.
         if (Input.GetKey(KeyCode.LeftArrow) == true)
         {
             yRotation -= YRotIntensity;
             xRotation += XRotIntensity;
         }
+        //Make the rotation.
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        velocity = (orientation.forward * directionY * moveSpeed) + (orientation.right * directionX * moveSpeed);
-        // Move
+        velocity = velocityY + velocityX;
+        //Update the velocity.
         transform.localPosition += velocity;
     }
 }
