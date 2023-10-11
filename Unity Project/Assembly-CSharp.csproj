@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets/movePan.cs" />
     <Compile Include="Assets/Scripts/MenuManager.cs" />
+    <Compile Include="Assets/Scripts/OrderManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
