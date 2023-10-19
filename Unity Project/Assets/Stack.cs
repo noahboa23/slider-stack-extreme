@@ -6,6 +6,7 @@ public class Stack : MonoBehaviour
 {
     public SelfDestruct scriptToDeactivate;
     public Rigidbody rb;
+    public IngredientType IngredientName; // added to determine ingredient kind
 
     public float error = 10F;
 
@@ -45,8 +46,11 @@ public class Stack : MonoBehaviour
             scriptToDeactivate.enabled = false;
             rb.isKinematic = true;
             finished = true;
+            OrderManager om = (OrderManager)FindObjectOfType(typeof(OrderManager));
+            om.UpdateCurrentStack(IngredientName);
         }
         // }
         // You can now do something with 'otherObject'.
+        
     }
 }

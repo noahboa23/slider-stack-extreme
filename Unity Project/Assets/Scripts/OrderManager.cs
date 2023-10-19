@@ -17,12 +17,20 @@ public class OrderManager : MonoBehaviour
 {
     [SerializeField] Sprite[] ingredientSprites = new Sprite[6];
     [SerializeField] float orderRefreshTimer = 30f;
-    float timer;
+    [SerializeField] UIManager uim;
+    
+    public float timer;
+    public static IngredientType[] currentOrder;
+    public static List<IngredientType> currentStack = new List<IngredientType>();
+    public static List<IngredientType> orderItemsNeeded;
+    public int score;
 
     public void Start()
-    { 
-        IngredientType[] ingredients = generateOrder();
-        displayIngredients(ingredients);
+    {
+        score = 0;
+        currentOrder = GenerateOrder();
+        DisplayIngredients(currentOrder);
+        orderItemsNeeded = new List<IngredientType>(currentOrder);
     }
 
     public void Update()
@@ -30,12 +38,16 @@ public class OrderManager : MonoBehaviour
         timer -= Time.deltaTime;
         if(timer <= 0)
         {
-            IngredientType[] ingredients = generateOrder();
-            displayIngredients(ingredients);
+            currentStack.Clear();
+            currentOrder = GenerateOrder();
+            DisplayIngredients(currentOrder);
+            orderItemsNeeded = new List<IngredientType>(currentOrder);
         }
+        uim.UpdateScoreText(score);
+        uim.UpdateTimerText((int)timer);
     }
 
-    public IngredientType[] generateOrder()
+    public IngredientType[] GenerateOrder()
     { // generate the order to display
         // pick a number between 1 and 5
         int numIngredients = Random.Range(1, 6);
@@ -49,7 +61,7 @@ public class OrderManager : MonoBehaviour
         return ingredients;
     }
 
-    public void displayIngredients(IngredientType[] ingredients)
+    public void DisplayIngredients(IngredientType[] ingredients)
     {
         // get the child sprites in order area --> only 5
         Image[] sprites = GetComponentsInChildren<Image>(true);
@@ -80,9 +92,46 @@ public class OrderManager : MonoBehaviour
             sprites[spriteIndex].gameObject.SetActive(true); // set visible
             spriteIndex++;
         }
-        for(int i = spriteIndex; i < 6; i++)
-        { // set unused sprites invisible
+        for (int i = spriteIndex; i < sprites.Length; i++)
+        { // set unused sprites invisible BUGGED
+            //sprites[spriteIndex].sprite = ingredientSprites[6];
             sprites[spriteIndex].gameObject.SetActive(false);
+            //Debug.Log("set " + sprites[i].gameObject.name + " inactive");
         }
     }
+
+    public void UpdateCurrentStack(IngredientType i)
+    {
+        currentStack.Add(i);
+        UpdateScore(i);
+    }
+
+    public void UpdateScore(IngredientType i)
+    {
+        bool notNeeded = true;
+        for(int j = 0; j < orderItemsNeeded.Count; j++)
+        { // check if item is in order
+            if(orderItemsNeeded[j] == i)
+            {
+                score += 10;
+                orderItemsNeeded.RemoveAt(j);
+                notNeeded = false;
+                break;
+            }
+        }
+        if (notNeeded)
+        { // wronf item penalty
+            score -= 10;
+        }
+        if(orderItemsNeeded.Count == 0)
+        { // reset if done
+            score += 100;
+            currentStack.Clear();
+            currentOrder = GenerateOrder();
+            DisplayIngredients(currentOrder);
+            orderItemsNeeded = new List<IngredientType>(currentOrder);
+        }
+        //Debug.Log("Score: " + score);
+    }
 }
+

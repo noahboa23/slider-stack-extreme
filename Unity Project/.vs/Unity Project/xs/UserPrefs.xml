@@ -1,7 +1,10 @@
 ﻿<Properties StartupConfiguration="{BDBCE7D3-139D-3EDB-816D-FB1D73476D25}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/OrderManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/OrderManager.cs" Line="7" Column="5" />
+      <File FileName="Assets/Scripts/spawnFood.cs" Line="31" Column="1" />
+      <File FileName="Assets/Stack.cs" Line="50" Column="51" />
+      <File FileName="Assets/Scripts/OrderManager.cs" Line="96" Column="49" />
+      <File FileName="Assets/Scripts/UIManager.cs" Line="15" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,7 +22,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cf56daa1-70f1-422f-af9c-d8cca5113a8b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d7701bb8-52ed-47e3-8887-dbc7e9254367" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
