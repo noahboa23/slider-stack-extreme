@@ -93,10 +93,8 @@ public class OrderManager : MonoBehaviour
             spriteIndex++;
         }
         for (int i = spriteIndex; i < sprites.Length; i++)
-        { // set unused sprites invisible BUGGED
-            //sprites[spriteIndex].sprite = ingredientSprites[6];
-            sprites[spriteIndex].gameObject.SetActive(false);
-            //Debug.Log("set " + sprites[i].gameObject.name + " inactive");
+        { // set unused sprites invisible 
+            sprites[i].gameObject.SetActive(false);
         }
     }
 

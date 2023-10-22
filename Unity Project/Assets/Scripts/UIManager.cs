@@ -17,8 +17,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTimerText(int timer)
     {
-        timerText.text = timer.ToString();
-    }
+        timerText.text = (timer / 60).ToString() + ":" + (timer % 60).ToString();
+    } 
 
 
     public void UpdateScoreText(int score)
