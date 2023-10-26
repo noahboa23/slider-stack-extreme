@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelfDestruct : MonoBehaviour
 {
-    private float lastTime;
+    public float lastTime;
     void Start()
     {
         lastTime = Time.fixedTime;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1337,8 +1337,8 @@ GameObject:
   - component: {fileID: 1368784636}
   - component: {fileID: 1368784635}
   - component: {fileID: 1368784639}
-  - component: {fileID: 1368784640}
   - component: {fileID: 1368784641}
+  - component: {fileID: 1368784642}
   m_Layer: 0
   m_Name: Bun
   m_TagString: Untagged
@@ -1441,21 +1441,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: -0.0000038146973, z: 0.000000029802322}
---- !u!114 &1368784640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368784634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91041a8b64c20ff4b87269e4a72736d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orientation: {fileID: 1368784638}
-  acceleration: 0.0002
-  maxSpeed: 0.007
 --- !u!54 &1368784641
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1472,6 +1457,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1368784642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368784634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91041a8b64c20ff4b87269e4a72736d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1368784638}
+  acceleration: 0.0002
+  maxSpeed: 0.007
 --- !u!1 &1406581371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,9 +2654,11 @@ GameObject:
   - component: {fileID: 2105234060848437687}
   - component: {fileID: 6519419683896476859}
   - component: {fileID: 6519419683896476860}
+  - component: {fileID: 6519419683896476862}
+  - component: {fileID: 6519419683896476861}
   m_Layer: 0
   m_Name: BottomBun
-  m_TagString: Untagged
+  m_TagString: top
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2699,3 +2701,29 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2124705421725058983, guid: a39155568f1e5024ba083ff5e260a8c1, type: 3}
+--- !u!114 &6519419683896476861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342251876438718488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855df9882d41c2c46a78e73b1a4b1101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reset: 0
+--- !u!114 &6519419683896476862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342251876438718488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0c0033efd4ac446868f1220ef6af8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reset: 0

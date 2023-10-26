@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 520534734692828840}
   - component: {fileID: 4645362983682448293}
   - component: {fileID: 2321755250405007128}
-  - component: {fileID: 4246553146365940506}
   - component: {fileID: -6906456252993025949}
-  - component: {fileID: -6830366449674100549}
+  - component: {fileID: 5531633953299840127}
+  - component: {fileID: 193559095370866842}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Untagged
@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9061725788429597194}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 124.61171, y: 124.611694, z: 76.00094}
+  m_LocalPosition: {x: 0, y: 0.036385, z: 0.0029333}
+  m_LocalScale: {x: 70.64238, y: 70.64237, z: 43.084934}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,7 +103,39 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2124705421725058983, guid: 3dc4899000a980f438a0289ccafe0e40, type: 3}
---- !u!114 &4246553146365940506
+--- !u!54 &-6906456252993025949
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061725788429597194}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 5
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5531633953299840127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061725788429597194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8093969f1cc50448bdba2b6c525644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptToDeactivate: {fileID: 193559095370866842}
+  rb: {fileID: -6906456252993025949}
+  IngredientName: 0
+  error: 10
+--- !u!114 &193559095370866842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,35 +147,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3c99c43dddf0144876968bdcb26397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &-6906456252993025949
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9061725788429597194}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 5
-  m_AngularDrag: 10
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &-6830366449674100549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9061725788429597194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b76a50e57205b94c8116dd9ea83fb83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptToDeactivate: {fileID: 4246553146365940506}
-  rb: {fileID: -6906456252993025949}
-  IngredientName: 4
-  error: 0.8
+  lastTime: 0
