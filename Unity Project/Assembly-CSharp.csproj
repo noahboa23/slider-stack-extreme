@@ -58,11 +58,13 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/movePan.cs" />
     <Compile Include="Assets/Scripts/SelfDestruct.cs" />
-    <Compile Include="Assets/Stack.cs" />
+    <Compile Include="Assets/Scripts/ExplosionReset.cs" />
     <Compile Include="Assets/Scripts/MenuManager.cs" />
+    <Compile Include="Assets/Scripts/Stack.cs" />
     <Compile Include="Assets/Scripts/spawnFood.cs" />
     <Compile Include="Assets/Scripts/UIManager.cs" />
     <Compile Include="Assets/Scripts/OrderManager.cs" />
+    <Compile Include="Assets/Scripts/Reset.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
