@@ -111,6 +111,13 @@ public class OrderManager : MonoBehaviour
 
     public void UpdateScore(IngredientType i)
     {
+        // if moldy, score penalty
+        if (i == IngredientType.Moldy)
+        {
+            score -= 100;
+            return;
+        }
+
         bool notNeeded = true;
         for (int j = 0; j < orderItemsNeeded.Count; j++)
         { // check if item is in order
@@ -123,7 +130,7 @@ public class OrderManager : MonoBehaviour
             }
         }
         if (notNeeded)
-        { // wronf item penalty
+        { // wrong item penalty
             score -= 10;
         }
         if (orderItemsNeeded.Count == 0)
