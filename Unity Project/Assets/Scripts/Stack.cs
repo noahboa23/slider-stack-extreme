@@ -32,14 +32,8 @@ public class Stack : MonoBehaviour
             otherObject.tag = "Untagged";
             //Place the topping on top of the slider.
             Vector3 newPosition;
-            if (otherObject.name == "BottomBun")
-            {
-                newPosition = new Vector3(collision.transform.position.x, collision.transform.position.y + 0.2F, collision.transform.position.z);
-            }
-            else
-            {
-                newPosition = new Vector3(collision.transform.position.x, collision.transform.position.y + 0.1F, collision.transform.position.z);
-            }
+            StackHeight height = (StackHeight)FindObjectOfType(typeof(StackHeight));
+            newPosition = new Vector3(collision.transform.position.x, height.nextTopping(), collision.transform.position.z);
             Vector3 newRotation = new Vector3(-90, 0, 0);
             transform.rotation = Quaternion.Euler(newRotation);
             transform.position = newPosition;

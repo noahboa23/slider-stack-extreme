@@ -23,6 +23,8 @@ public class Reset : MonoBehaviour
             }
             //Set the bun to the top of the slider.
             tag = "top";
+            StackHeight height = (StackHeight)FindObjectOfType(typeof(StackHeight));
+            height.reset();
         }
     }
 }

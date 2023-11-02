@@ -24,6 +24,8 @@ public class ExplosionReset : MonoBehaviour
                 explode(child.gameObject);
             }
             tag = "top";
+            StackHeight height = (StackHeight)FindObjectOfType(typeof(StackHeight));
+            height.reset();
         }
     }
     void explode(GameObject parent)

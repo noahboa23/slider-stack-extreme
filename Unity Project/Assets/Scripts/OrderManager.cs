@@ -10,7 +10,9 @@ public enum IngredientType
     Cheese,
     Onion,
     Tomato,
-    Pickles
+    Pickles,
+    TopBun,
+    Moldy
 }
 
 public class OrderManager : MonoBehaviour
@@ -18,12 +20,14 @@ public class OrderManager : MonoBehaviour
     [SerializeField] Sprite[] ingredientSprites = new Sprite[6];
     [SerializeField] float orderRefreshTimer = 30f;
     [SerializeField] UIManager uim;
-    
+
     public float timer;
     public static IngredientType[] currentOrder;
     public static List<IngredientType> currentStack = new List<IngredientType>();
     public static List<IngredientType> orderItemsNeeded;
     public int score;
+
+    public ExplosionReset explosion;
 
     public void Start()
     {
@@ -36,9 +40,10 @@ public class OrderManager : MonoBehaviour
     public void Update()
     {
         timer -= Time.deltaTime;
-        if(timer <= 0)
+        if (timer <= 0)
         {
             currentStack.Clear();
+            explosion.reset = true;
             currentOrder = GenerateOrder();
             DisplayIngredients(currentOrder);
             orderItemsNeeded = new List<IngredientType>(currentOrder);
@@ -52,8 +57,8 @@ public class OrderManager : MonoBehaviour
         // pick a number between 1 and 5
         int numIngredients = Random.Range(1, 6);
         // create array of randomly chosen ingredients
-        IngredientType[] ingredients = new IngredientType[numIngredients]; 
-        for(int i = 0; i < numIngredients; i++)
+        IngredientType[] ingredients = new IngredientType[numIngredients];
+        for (int i = 0; i < numIngredients; i++)
         {
             ingredients[i] = (IngredientType)Random.Range(0, 6);
         }
@@ -107,9 +112,9 @@ public class OrderManager : MonoBehaviour
     public void UpdateScore(IngredientType i)
     {
         bool notNeeded = true;
-        for(int j = 0; j < orderItemsNeeded.Count; j++)
+        for (int j = 0; j < orderItemsNeeded.Count; j++)
         { // check if item is in order
-            if(orderItemsNeeded[j] == i)
+            if (orderItemsNeeded[j] == i)
             {
                 score += 10;
                 orderItemsNeeded.RemoveAt(j);
@@ -121,7 +126,7 @@ public class OrderManager : MonoBehaviour
         { // wronf item penalty
             score -= 10;
         }
-        if(orderItemsNeeded.Count == 0)
+        if (orderItemsNeeded.Count == 0)
         { // reset if done
             score += 100;
             currentStack.Clear();
