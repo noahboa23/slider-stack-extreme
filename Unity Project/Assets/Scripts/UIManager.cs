@@ -17,7 +17,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTimerText(int timer)
     {
-        timerText.text = (timer / 60).ToString() + ":" + (timer % 60).ToString();
+        string minutes = (timer / 60).ToString();
+        string seconds = (timer % 60).ToString();
+        if((timer % 60) < 10){
+            seconds = "0" + seconds;
+        }
+        timerText.text = minutes + ":" + seconds;
     } 
 
 

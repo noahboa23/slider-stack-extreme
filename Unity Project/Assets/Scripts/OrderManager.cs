@@ -117,6 +117,19 @@ public class OrderManager : MonoBehaviour
             score -= 100;
             return;
         }
+        if (i == IngredientType.TopBun)
+        {// top bun forces reset
+            if (orderItemsNeeded.Count == 0)
+            { // if got all ingridients, get bonus
+                score += 100;
+            }
+            explosion.reset = true;
+            currentStack.Clear();
+            currentOrder = GenerateOrder();
+            DisplayIngredients(currentOrder);
+            orderItemsNeeded = new List<IngredientType>(currentOrder);
+            return;
+        }
 
         bool notNeeded = true;
         for (int j = 0; j < orderItemsNeeded.Count; j++)
@@ -133,14 +146,7 @@ public class OrderManager : MonoBehaviour
         { // wrong item penalty
             score -= 10;
         }
-        if (orderItemsNeeded.Count == 0)
-        { // reset if done
-            score += 100;
-            currentStack.Clear();
-            currentOrder = GenerateOrder();
-            DisplayIngredients(currentOrder);
-            orderItemsNeeded = new List<IngredientType>(currentOrder);
-        }
+        
         //Debug.Log("Score: " + score);
     }
 }
