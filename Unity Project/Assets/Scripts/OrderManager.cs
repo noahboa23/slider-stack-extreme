@@ -10,14 +10,13 @@ public enum IngredientType
     Cheese,
     Onion,
     Tomato,
-    Pickles,
     TopBun,
     Moldy
 }
 
 public class OrderManager : MonoBehaviour
 {
-    [SerializeField] Sprite[] ingredientSprites = new Sprite[6];
+    [SerializeField] Sprite[] ingredientSprites = new Sprite[5];
     [SerializeField] float orderRefreshTimer = 30f;
     [SerializeField] UIManager uim;
 
@@ -60,7 +59,7 @@ public class OrderManager : MonoBehaviour
         IngredientType[] ingredients = new IngredientType[numIngredients];
         for (int i = 0; i < numIngredients; i++)
         {
-            ingredients[i] = (IngredientType)Random.Range(0, 6);
+            ingredients[i] = (IngredientType)Random.Range(0, 5);
         }
         timer = orderRefreshTimer;
         return ingredients;
@@ -89,9 +88,6 @@ public class OrderManager : MonoBehaviour
                     break;
                 case IngredientType.Tomato:
                     sprites[spriteIndex].sprite = ingredientSprites[4];
-                    break;
-                case IngredientType.Pickles:
-                    sprites[spriteIndex].sprite = ingredientSprites[5];
                     break;
             }
             sprites[spriteIndex].gameObject.SetActive(true); // set visible

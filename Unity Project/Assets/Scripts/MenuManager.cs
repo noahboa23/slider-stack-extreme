@@ -16,4 +16,12 @@ public class MenuManager : MonoBehaviour
         Debug.Log("quit button pressed");
     }
 
+    public void PauseGame(){
+        Time.timeScale = 0.0F;
+    }
+
+    public void UnpauseGame(){
+        Time.timeScale = 1.0F;
+    }
+
 }
