@@ -11,6 +11,9 @@ public class Stack : MonoBehaviour
     public float error = 10F;
 
     private bool finished = false;
+
+    private AudioSource audioSource;
+
     void Start()
     {
 
