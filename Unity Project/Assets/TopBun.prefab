@@ -144,5 +144,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptToDeactivate: {fileID: 3252720926697580635}
   rb: {fileID: 3469405140881767460}
-  IngredientName: 6
+  IngredientName: 5
   error: 10

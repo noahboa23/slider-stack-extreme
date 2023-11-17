@@ -43,6 +43,7 @@
      <Compile Include="Assets/Scripts/MenuManager.cs" />
      <Compile Include="Assets/Scripts/Stack.cs" />
      <Compile Include="Assets/Scripts/StackHeight.cs" />
+     <Compile Include="Assets/Scripts/InfiniteFloor.cs" />
      <Compile Include="Assets/Scripts/spawnFood.cs" />
      <Compile Include="Assets/Scripts/UIManager.cs" />
      <Compile Include="Assets/Scripts/StackLettuce.cs" />
