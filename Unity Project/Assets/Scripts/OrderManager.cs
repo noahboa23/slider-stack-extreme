@@ -28,6 +28,9 @@ public class OrderManager : MonoBehaviour
 
     public ExplosionReset explosion;
 
+    public AudioSource audioSrc;
+    public AudioClip goodSound, wrongSound, moldySound, completedSound;
+
     public void Start()
     {
         score = 0;
@@ -110,6 +113,8 @@ public class OrderManager : MonoBehaviour
         // if moldy, score penalty
         if (i == IngredientType.Moldy)
         {
+            audioSrc.clip = moldySound;
+            audioSrc.Play();
             score -= 100;
             return;
         }
@@ -117,6 +122,8 @@ public class OrderManager : MonoBehaviour
         {// top bun forces reset
             if (orderItemsNeeded.Count == 0)
             { // if got all ingridients, get bonus
+                audioSrc.clip = completedSound;
+                audioSrc.Play();
                 score += 100;
             }
             explosion.reset = true;
@@ -132,6 +139,8 @@ public class OrderManager : MonoBehaviour
         { // check if item is in order
             if (orderItemsNeeded[j] == i)
             {
+                audioSrc.clip = goodSound;
+                audioSrc.Play();
                 score += 10;
                 orderItemsNeeded.RemoveAt(j);
                 notNeeded = false;
@@ -140,6 +149,8 @@ public class OrderManager : MonoBehaviour
         }
         if (notNeeded)
         { // wrong item penalty
+            audioSrc.clip = wrongSound;
+            audioSrc.Play();
             score -= 10;
         }
         
